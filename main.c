@@ -42,12 +42,14 @@ int main(int argc, char *argv[]) {
         setbuffer[1] = 0x19;
     }
 
+    __u8 data[9] = {0x01,0x03,0x02,0x00,0x00,0x00,0x00,0x00,0x00};
+
     struct uvc_xu_control_query set_query = {
         .unit = 0x0e,
-        .selector = 0x0e,
+        .selector = 0x06,
         .query = UVC_SET_CUR,
-        .size = 2,
-        .data = (__u8*)&setbuffer,
+        .size = 9,
+        .data = (__u8*)&data,
     };
 
     int result = 0;
